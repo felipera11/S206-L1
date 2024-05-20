@@ -7,70 +7,120 @@
 	},
 	"item": [
 		{
-			"name": "Localiza Pokemon com sucesso",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://pokeapi.co/api/v2/pokemon/ditto",
-					"protocol": "https",
-					"host": [
-						"pokeapi",
-						"co"
+			"name": "GET",
+			"item": [
+				{
+					"name": "Localiza Pokemon com sucesso",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"gigaton\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
 					],
-					"path": [
-						"api",
-						"v2",
-						"pokemon",
-						"ditto"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Nao Localiza Pokemon",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://pokeapi.co/api/v2/pokemon/aaaaaaa",
-					"protocol": "https",
-					"host": [
-						"pokeapi",
-						"co"
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pokeapi.co/api/v2/pokemon/tinkaton",
+							"protocol": "https",
+							"host": [
+								"pokeapi",
+								"co"
+							],
+							"path": [
+								"api",
+								"v2",
+								"pokemon",
+								"tinkaton"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Endpoint Falha Localiza Pokemon",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
 					],
-					"path": [
-						"api",
-						"v2",
-						"pokemon",
-						"aaaaaaa"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Endpoint Falha Localiza Pokemon",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://pokeapi.co/api/v2/pokemo/ditto",
-					"protocol": "https",
-					"host": [
-						"pokeapi",
-						"co"
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pokeapi.co/api/v2/pokemo/ditto",
+							"protocol": "https",
+							"host": [
+								"pokeapi",
+								"co"
+							],
+							"path": [
+								"api",
+								"v2",
+								"pokemo",
+								"ditto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Nao Localiza Pokemon",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
 					],
-					"path": [
-						"api",
-						"v2",
-						"pokemo",
-						"ditto"
-					]
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pokeapi.co/api/v2/pokemon/aaaaaaa",
+							"protocol": "https",
+							"host": [
+								"pokeapi",
+								"co"
+							],
+							"path": [
+								"api",
+								"v2",
+								"pokemon",
+								"aaaaaaa"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
